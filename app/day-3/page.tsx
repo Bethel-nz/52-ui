@@ -151,7 +151,7 @@ export default function Page() {
 							<span className="text-white/60">Muse:</span>
 							<BlurText
 								className="inline-block ml-2 text-white"
-								delay={isLoading ? 0 : 0.3}
+								delay={!isLoading ? 0.3 : 0}
 							>
 								{artworks[currentIndex].name}
 							</BlurText>
