@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-   experimental: {
+   images: {
+    remotePatterns: [
+      {
+        hostname: "api.microlink.io",
+      },
+    ],
+  },
+  experimental: {
     reactCompiler: true,
   },
 };

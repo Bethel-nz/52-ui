@@ -18,7 +18,6 @@ export default function Page() {
 			<div />
 			<div className='px-16  '>
 				<div className='bg-gray-300 w-full h-96 rounded-t-lg'></div>
-
 			</div>
 		</div>
 	)
