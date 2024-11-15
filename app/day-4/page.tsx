@@ -7,17 +7,49 @@ type Position = {
 	y: number
 	rotation: number
 }
-// Get a random position for the scattered numbers
-function getRandomPosition(): Position {
-	const angle = Math.random() * Math.PI * 2
-	const radius = 200 + Math.random() * 200
-	const direction = Math.random() > 0.5 ? 1 : -1
+// Track used positions to prevent overlap
+const usedPositions: Position[] = []
 
-	return {
-		x: radius * Math.cos(angle),
-		y: radius * Math.sin(angle),
-		rotation: direction * (360 + Math.random() * 360)
-	}
+function getRandomPosition(): Position {
+	const minDistance = 60 // Minimum distance between numbers
+	let newPosition: Position
+	let attempts = 0
+	const maxAttempts = 50
+
+	do {
+		const angle = Math.random() * Math.PI * 2
+		// Reduce radius range for tighter spread
+		const radius = 100 + Math.random() * 200
+		const direction = Math.random() > 0.5 ? 1 : -1
+
+		newPosition = {
+			x: radius * Math.cos(angle),
+			y: radius * Math.sin(angle),
+			rotation: direction * (360 + Math.random() * 360)
+		}
+
+		// Check if position is far enough from all other positions
+		const isFarEnough = usedPositions.every(pos => {
+			const distance = Math.sqrt(
+				Math.pow(pos.x - newPosition.x, 2) +
+				Math.pow(pos.y - newPosition.y, 2)
+			)
+			return distance >= minDistance
+		})
+
+		if (isFarEnough || attempts >= maxAttempts) {
+			usedPositions.push(newPosition)
+			// Keep array size manageable
+			if (usedPositions.length > 30) {
+				usedPositions.shift()
+			}
+			break
+		}
+
+		attempts++
+	} while (attempts < maxAttempts)
+
+	return newPosition
 }
 
 export default function Page() {
