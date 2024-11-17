@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import NumberFlow from '@number-flow/react'
 import { aeonik } from '~app/fonts'
@@ -71,7 +71,7 @@ export function Loader() {
 						}
 					}}
 				>
-					<div className="flex-1 flex items-center justify-center">
+					<div className="flex flex-1 justify-center items-center">
 						<motion.div
 							initial={{ scale: 0.9, opacity: 0 }}
 							animate={{ scale: 1, opacity: 1 }}
@@ -86,14 +86,14 @@ export function Loader() {
 								alt="loader"
 								width={100}
 								height={100}
-								className="w-fit object-contain"
+								className="object-contain w-fit"
 								priority
 							/>
 						</motion.div>
 					</div>
 
 					<motion.div
-						className="flex items-center justify-end px-16 pb-16"
+						className="flex justify-end items-center px-16 pb-16"
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{
@@ -101,7 +101,7 @@ export function Loader() {
 							delay: 0.3
 						}}
 					>
-						<div className="text-4xl font-bold text-black flex items-center gap-4">
+						<div className="flex gap-4 items-center text-4xl font-bold text-black">
 							<NumberFlow
 								value={count}
 								format={{ maximumFractionDigits: 0 }}

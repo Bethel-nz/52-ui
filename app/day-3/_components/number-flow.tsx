@@ -1,6 +1,6 @@
 'use client'
 
-import { useInView } from 'framer-motion'
+import { useInView } from 'motion/react'
 import { useRef, useState, useEffect } from 'react'
 import NumberFlow from '@number-flow/react'
 

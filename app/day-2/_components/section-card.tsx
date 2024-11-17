@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from "react"
 import './styles.css'
 
@@ -89,15 +89,15 @@ export function SectionCard({ gradient, description, index }: SectionCardProps) 
 				/>
 
 				{/* Description */}
-				<div className="w-full max-w-xl mx-auto text-center">
+				<div className="mx-auto w-full max-w-xl text-center">
 					<motion.div
-						className="relative px-6 py-4 rounded-xl bg-white/80 backdrop-blur-sm"
+						className="relative px-6 py-4 rounded-xl backdrop-blur-sm bg-white/80"
 						style={{ opacity: scrollProgress.opacity }}
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.1 * index }}
 					>
-						<p className="text-lg text-gray-800 leading-relaxed">
+						<p className="text-lg leading-relaxed text-gray-800">
 							{description}
 						</p>
 					</motion.div>

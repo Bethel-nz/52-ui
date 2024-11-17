@@ -8,7 +8,7 @@ import {
 	motion,
 	useMotionValue,
 	useSpring,
-} from "framer-motion";
+} from "motion/react";
 import Link from "next/link";
 import { cx } from "~utils/cx";
 

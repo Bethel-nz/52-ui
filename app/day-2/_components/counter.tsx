@@ -5,7 +5,7 @@ import {
 	animate,
 	useInView,
 	useIsomorphicLayoutEffect,
-} from 'framer-motion';
+} from 'motion/react'
 import * as React from 'react';
 
 type AnimatedCounterProps = {

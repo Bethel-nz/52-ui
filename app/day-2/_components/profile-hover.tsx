@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'motion/react'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 
@@ -50,7 +50,7 @@ export function ProfileHover({
 	return (
 		<span
 			ref={containerRef}
-			className={`relative inline-block font-semibold ${className}`}
+			className={`inline-block relative font-semibold ${className}`}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => {
 				setIsHovered(false)
@@ -78,12 +78,12 @@ export function ProfileHover({
 								'50%'
 						}}
 					>
-						<div className="bg-white rounded-2xl p-2 shadow-lg border border-gray-200/60 backdrop-blur-sm">
+						<div className="p-2 bg-white rounded-2xl border shadow-lg backdrop-blur-sm border-gray-200/60">
 							<div className="relative" style={{ width, height }}>
 								<Image
 									src={image}
 									alt={name}
-									className="rounded-lg object-cover"
+									className="object-cover rounded-lg"
 									fill
 									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									priority
@@ -94,7 +94,7 @@ export function ProfileHover({
 								<motion.p
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
-									className="text-xs text-gray-500 text-center mt-2"
+									className="mt-2 text-xs text-center text-gray-500"
 								>
 									{role}
 								</motion.p>

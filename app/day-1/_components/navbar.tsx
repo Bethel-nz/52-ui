@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { useLoader } from './LoaderContext'
 
 export default function Navbar() {
@@ -12,7 +12,7 @@ export default function Navbar() {
 	return (
 		<AnimatePresence>
 			<motion.div
-				className="flex items-center justify-between px-16 py-8"
+				className="flex justify-between items-center px-16 py-8"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{
@@ -35,13 +35,13 @@ export default function Navbar() {
 						alt="logo"
 						width={100}
 						height={56}
-						className="h-14 w-auto"
+						className="w-auto h-14"
 						priority
 					/>
 				</motion.div>
 
 				<motion.div
-					className="flex items-center gap-4"
+					className="flex gap-4 items-center"
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{
@@ -56,10 +56,10 @@ export default function Navbar() {
 							alt="menu"
 							width={100}
 							height={48}
-							className="h-12 w-auto"
+							className="w-auto h-12"
 						/>
 					</span>
-					<span className="text-md font-medium bg-black text-white px-5 py-3 rounded-full">
+					<span className="px-5 py-3 font-medium text-white bg-black rounded-full text-md">
 						Shop Now
 					</span>
 				</motion.div>

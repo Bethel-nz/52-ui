@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 import { use } from 'react'
 import { TOCContext } from './toc-context'
@@ -23,7 +23,7 @@ export function Nav() {
 	}
 
 	return (
-		<div className='fixed top-8 w-full z-50 flex justify-center'>
+		<div className='flex fixed top-8 z-50 justify-center w-full'>
 			<div className='flex flex-row items-start px-1.5 border border-gray-200/60 py-1 rounded-md bg-white backdrop-blur-sm shadow-sm'>
 				{navItems.map((item, index) => (
 					<div key={item.id} className="relative w-full">
@@ -41,7 +41,7 @@ export function Nav() {
 							{(hoveredTab === item.id || (activeSection === index && hoveredTab === null)) && (
 								<motion.div
 									layoutId="bubble"
-									className="absolute inset-0 z-0 overflow-hidden rounded-md"
+									className="overflow-hidden absolute inset-0 z-0 rounded-md"
 									transition={{
 										type: "spring",
 										bounce: 0.15,
@@ -59,7 +59,7 @@ export function Nav() {
 									{/* Progress indicator */}
 									{activeSection === index && (
 										<motion.div
-											className="absolute left-0 top-0 bottom-0 bg-gray-300/80"
+											className="absolute top-0 bottom-0 left-0 bg-gray-300/80"
 											initial={false}
 											animate={{ width: `${scrollProgress * 100}%` }}
 											transition={{
@@ -87,14 +87,14 @@ export function Nav() {
 												damping: 25
 											}
 										}}
-										className="relative z-10 whitespace-nowrap text-gray-900/70 font-semibold text-sm block"
+										className="block relative z-10 text-sm font-semibold whitespace-nowrap text-gray-900/70"
 									>
 										{item.label}
 									</motion.span>
 								) : (
 									<motion.span
 										key="inactive"
-										className="relative z-10 whitespace-nowrap text-gray-500 block"
+										className="block relative z-10 text-gray-500 whitespace-nowrap"
 									>
 										{item.label}
 									</motion.span>
