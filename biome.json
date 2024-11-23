@@ -7,12 +7,18 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"ignore": ["node_modules", "dist", "build"]
+		"ignore": [
+			"node_modules",
+			"dist",
+			"build",
+			".git"
+		]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-		"lineWidth": 100
+		"lineWidth": 100,
+		"bracketSpacing": true
 	},
 	"organizeImports": {
 		"enabled": true
@@ -20,14 +26,17 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"all": true
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
 			"jsxQuoteStyle": "single",
-			"semicolons": "always"
+			"semicolons": "always",
+			"bracketSpacing": true,
+			"arrowParentheses": "always"
 		}
 	}
 }
