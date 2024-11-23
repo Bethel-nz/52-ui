@@ -1,16 +1,11 @@
-"use client";
-import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import Image from "next/image";
-import { encode } from "qss";
-import React from "react";
-import {
-	AnimatePresence,
-	motion,
-	useMotionValue,
-	useSpring,
-} from "motion/react";
-import Link from "next/link";
-import { cx } from "~utils/cx";
+'use client';
+import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
+import Image from 'next/image';
+import { encode } from 'qss';
+import React from 'react';
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'motion/react';
+import Link from 'next/link';
+import { cx } from '~utils/cx';
 
 type LinkPreviewProps = {
 	children: React.ReactNode;
@@ -20,10 +15,7 @@ type LinkPreviewProps = {
 	height?: number;
 	quality?: number;
 	layout?: string;
-} & (
-		| { isStatic: true; imageSrc: string }
-		| { isStatic?: false; imageSrc?: never }
-	);
+} & ({ isStatic: true; imageSrc: string } | { isStatic?: false; imageSrc?: never });
 
 export const LinkPreview = ({
 	children,
@@ -32,9 +24,9 @@ export const LinkPreview = ({
 	width = 200,
 	height = 125,
 	quality = 50,
-	layout = "fixed",
+	layout = 'fixed',
 	isStatic = false,
-	imageSrc = "",
+	imageSrc = '',
 }: LinkPreviewProps) => {
 	let src;
 	if (!isStatic) {
@@ -42,12 +34,12 @@ export const LinkPreview = ({
 			url,
 			screenshot: true,
 			meta: false,
-			embed: "screenshot.url",
-			colorScheme: "dark",
-			"viewport.isMobile": true,
-			"viewport.deviceScaleFactor": 1,
-			"viewport.width": width * 3,
-			"viewport.height": height * 3,
+			embed: 'screenshot.url',
+			colorScheme: 'dark',
+			'viewport.isMobile': true,
+			'viewport.deviceScaleFactor': 1,
+			'viewport.width': width * 3,
+			'viewport.height': height * 3,
 		});
 		src = `https://api.microlink.io/?${params}`;
 	} else {
@@ -77,7 +69,7 @@ export const LinkPreview = ({
 	return (
 		<>
 			{isMounted ? (
-				<div className="hidden">
+				<div className='hidden'>
 					<Image
 						src={src}
 						width={width}
@@ -85,7 +77,7 @@ export const LinkPreview = ({
 						quality={quality}
 						layout={layout}
 						priority={true}
-						alt="hidden image"
+						alt='hidden image'
 					/>
 				</div>
 			) : null}
@@ -99,16 +91,16 @@ export const LinkPreview = ({
 			>
 				<HoverCardPrimitive.Trigger
 					onMouseMove={handleMouseMove}
-					className={cx("text-black dark:text-white", className)}
+					className={cx('text-black dark:text-white', className)}
 					href={url}
 				>
 					{children}
 				</HoverCardPrimitive.Trigger>
 
 				<HoverCardPrimitive.Content
-					className="[transform-origin:var(--radix-hover-card-content-transform-origin)] relative z-[100]"
-					side="top"
-					align="center"
+					className='[transform-origin:var(--radix-hover-card-content-transform-origin)] relative z-[100]'
+					side='top'
+					align='center'
 					sideOffset={10}
 				>
 					<AnimatePresence>
@@ -120,32 +112,31 @@ export const LinkPreview = ({
 									y: 0,
 									scale: 1,
 									transition: {
-										type: "spring",
+										type: 'spring',
 										stiffness: 260,
 										damping: 20,
 									},
 								}}
 								exit={{ opacity: 0, y: 20, scale: 0.6 }}
-								className="shadow-xl rounded-xl relative z-[100]"
+								className='shadow-xl rounded-xl relative z-[100]'
 								style={{
 									x: translateX,
 								}}
 							>
 								<Link
 									href={url}
-									className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800 relative z-[100]"
+									className='block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800 relative z-[100]'
 									style={{ fontSize: 0 }}
 								>
 									<Image
 										src={isStatic ? imageSrc : src}
 										width={width}
 										height={height}
-
 										quality={quality}
 										layout={layout}
 										priority={true}
-										className="rounded-lg"
-										alt="preview image"
+										className='rounded-lg'
+										alt='preview image'
 									/>
 								</Link>
 							</motion.div>

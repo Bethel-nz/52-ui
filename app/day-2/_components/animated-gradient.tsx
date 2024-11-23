@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { motion } from 'motion/react'
+import { motion } from 'motion/react';
 
 export function AnimatedGradient() {
 	return (
 		<motion.div
-			className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+			className='absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100'
 			initial={false}
 			animate={{
 				background: [
@@ -17,8 +17,8 @@ export function AnimatedGradient() {
 			transition={{
 				duration: 2,
 				repeat: Infinity,
-				repeatType: "reverse",
+				repeatType: 'reverse',
 			}}
 		/>
-	)
-} 
+	);
+}

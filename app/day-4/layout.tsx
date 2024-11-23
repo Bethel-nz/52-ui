@@ -1,18 +1,14 @@
-import { Space_Grotesk } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({
 	subsets: ['latin'],
 	variable: '--font-space-grotesk',
-})
+});
 
 export default function DayLayout({
 	children,
 }: {
-	children: React.ReactNode
+	children: React.ReactNode;
 }) {
-	return (
-		<div className={`${spaceGrotesk.variable} font-sans min-h-screen`}>
-			{children}
-		</div>
-	)
-} 
+	return <div className={`${spaceGrotesk.variable} font-sans min-h-screen`}>{children}</div>;
+}

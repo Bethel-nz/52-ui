@@ -1,38 +1,30 @@
-'use client'
-import { useRef, HTMLAttributes } from 'react'
-import { motion, useScroll, useTransform, useSpring, useInView } from 'motion/react'
-import { cx } from '~utils/cx'
+'use client';
+import { useRef, HTMLAttributes } from 'react';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'motion/react';
+import { cx } from '~utils/cx';
 
 type SectionProps = {
-	children: React.ReactNode
-	className?: string
-} & HTMLAttributes<HTMLElement>
+	children: React.ReactNode;
+	className?: string;
+} & HTMLAttributes<HTMLElement>;
 
 export function Section({ children, className, ...props }: SectionProps) {
-	const sectionRef = useRef<HTMLElement>(null)
-	const isInView = useInView(sectionRef, { amount: 0.5, once: false })
+	const sectionRef = useRef<HTMLElement>(null);
+	const isInView = useInView(sectionRef, { amount: 0.5, once: false });
 
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
-		offset: ["start end", "end start"]
-	})
+		offset: ['start end', 'end start'],
+	});
 
-	const yOffset = useTransform(
-		scrollYProgress,
-		[0, 1],
-		[100, 0]
-	)
+	const yOffset = useTransform(scrollYProgress, [0, 1], [100, 0]);
 
-	const scale = useTransform(
-		scrollYProgress,
-		[0, 0.5, 1],
-		[0.9, 1, 0.9]
-	)
+	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
 
 	const scaleSpring = useSpring(scale, {
 		stiffness: 100,
-		damping: 20
-	})
+		damping: 20,
+	});
 
 	return (
 		<section
@@ -52,12 +44,12 @@ export function Section({ children, className, ...props }: SectionProps) {
 				}}
 				transition={{
 					duration: 0.8,
-					ease: [0.16, 1, 0.3, 1]
+					ease: [0.16, 1, 0.3, 1],
 				}}
-				className="w-full"
+				className='w-full'
 			>
 				{children}
 			</motion.div>
 		</section>
-	)
-} 
+	);
+}

@@ -1,11 +1,6 @@
 'use client';
 
-import {
-	KeyframeOptions,
-	animate,
-	useInView,
-	useIsomorphicLayoutEffect,
-} from 'motion/react'
+import { KeyframeOptions, animate, useInView, useIsomorphicLayoutEffect } from 'motion/react';
 import * as React from 'react';
 
 type AnimatedCounterProps = {

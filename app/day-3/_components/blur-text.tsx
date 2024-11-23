@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { motion } from 'motion/react'
-import { cx } from '~utils/cx'
+import { motion } from 'motion/react';
+import { cx } from '~utils/cx';
 
 interface BlurTextProps {
-	children: React.ReactNode
-	className?: string
-	delay?: number
+	children: React.ReactNode;
+	className?: string;
+	delay?: number;
 }
 
 export function BlurText({ children, className, delay = 0 }: BlurTextProps) {
@@ -17,11 +17,11 @@ export function BlurText({ children, className, delay = 0 }: BlurTextProps) {
 			transition={{
 				duration: 0.8,
 				delay: delay,
-				ease: [0.25, 0.25, 0, 1]
+				ease: [0.25, 0.25, 0, 1],
 			}}
 			className={cx(className)}
 		>
 			{children}
 		</motion.div>
-	)
-} 
+	);
+}

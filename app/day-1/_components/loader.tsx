@@ -1,15 +1,15 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
-import Image from 'next/image'
-import NumberFlow from '@number-flow/react'
-import { aeonik } from '~app/fonts'
-import { useLoader } from './LoaderContext'
+'use client';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
+import NumberFlow from '@number-flow/react';
+import { aeonik } from '~app/fonts';
+import { useLoader } from './LoaderContext';
 
 export function Loader() {
-	const [count, setCount] = useState(0)
-	const [isComplete, setIsComplete] = useState(false)
-	const { setIsLoading } = useLoader()
+	const [count, setCount] = useState(0);
+	const [isComplete, setIsComplete] = useState(false);
+	const { setIsLoading } = useLoader();
 
 	useEffect(() => {
 		// Initial delay before starting animation
@@ -33,7 +33,7 @@ export function Loader() {
 				} else {
 					// Slow counting from 80 to 90 (2s)
 					const slowCount = setInterval(() => {
-						setCount(prev => {
+						setCount((prev) => {
 							if (prev < 90) return prev + 1;
 							clearInterval(slowCount);
 							return prev;
@@ -59,7 +59,7 @@ export function Loader() {
 	}, [setIsLoading]);
 
 	return (
-		<AnimatePresence mode="wait">
+		<AnimatePresence mode='wait'>
 			{!isComplete && (
 				<motion.div
 					className={`relative w-full flex flex-col bg-white h-dvh ${aeonik.className}`}
@@ -67,51 +67,47 @@ export function Loader() {
 						y: '-100%',
 						transition: {
 							duration: 0.8,
-							ease: [0.4, 0, 0.2, 1]
-						}
+							ease: [0.4, 0, 0.2, 1],
+						},
 					}}
 				>
-					<div className="flex flex-1 justify-center items-center">
+					<div className='flex flex-1 justify-center items-center'>
 						<motion.div
 							initial={{ scale: 0.9, opacity: 0 }}
 							animate={{ scale: 1, opacity: 1 }}
 							transition={{
-								type: "spring",
+								type: 'spring',
 								stiffness: 200,
-								damping: 20
+								damping: 20,
 							}}
 						>
 							<Image
-								src={"/day-1/soga.svg"}
-								alt="loader"
+								src={'/day-1/soga.svg'}
+								alt='loader'
 								width={100}
 								height={100}
-								className="object-contain w-fit"
+								className='object-contain w-fit'
 								priority
 							/>
 						</motion.div>
 					</div>
 
 					<motion.div
-						className="flex justify-end items-center px-16 pb-16"
+						className='flex justify-end items-center px-16 pb-16'
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{
 							duration: 0.5,
-							delay: 0.3
+							delay: 0.3,
 						}}
 					>
-						<div className="flex gap-4 items-center text-4xl font-bold text-black">
-							<NumberFlow
-								value={count}
-								format={{ maximumFractionDigits: 0 }}
-								continuous={true}
-							/>
+						<div className='flex gap-4 items-center text-4xl font-bold text-black'>
+							<NumberFlow value={count} format={{ maximumFractionDigits: 0 }} continuous={true} />
 							<span>%</span>
 						</div>
 					</motion.div>
 				</motion.div>
 			)}
 		</AnimatePresence>
-	)
+	);
 }
